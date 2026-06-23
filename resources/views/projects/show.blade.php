@@ -6,9 +6,18 @@
     <title>Mes projets</title>
 </head>
 <body>
+
+</body>
+</html>
+
+@extends('layouts.app')
+
+@section('title', 'Mes projets')
+
+@section('content')
     <h1>Détail du projet</h1>
+    
     <h2>{{ $project['title'] }}</h2>
     <p>{{ $project['description'] }}</p>
     <a href="{{ route('projects.index') }}">Retour à la liste</a>
-</body>
-</html>
+@endsection

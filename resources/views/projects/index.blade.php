@@ -1,11 +1,8 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mes projets</title>
-</head>
-<body>
+@extends('layouts.app')
+
+@section('title', 'Mes projets')
+
+@section('content')
     <h1>Mes projets</h1>
 
     <ul>
@@ -19,5 +16,4 @@
             <li>Aucun projet trouvé.</li>
         @endforelse
     </ul>
-</body>
-</html>
+@endsection
