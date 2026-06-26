@@ -15,6 +15,15 @@ class ProjectController extends Controller
 
     public function show(int $id)
     {
+        $project = $this->findProjectOrFail($id);
+
+        return view('projects.show', [
+            'project' => $project,
+        ]);
+    }
+
+    private function findProjectOrFail(int $id): array
+    {
         $projects = $this->getProjects();
         $selectedProject = null;
 
@@ -29,9 +38,7 @@ class ProjectController extends Controller
             abort(404);
         }
 
-        return view('projects.show', [
-            'project' => $selectedProject,
-        ]);
+        return $selectedProject;
     }
 
     private function getProjects(): array
