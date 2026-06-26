@@ -41,16 +41,31 @@ class ProjectController extends Controller
                 'id' => 1,
                 'title' => 'Portfolio Laravel',
                 'description' => 'Un projet pour présenter mes compétences en Laravel.',
+                'technologies' => [
+                    'Laravel',
+                    'Blade',
+                    'PHP',
+                ],
             ],
             [
                 'id' => 2,
                 'title' => 'Application de gestion de tâches',
                 'description' => 'Une application pour gérer les tâches quotidiennes.',
+                'technologies' => [
+                    'Laravel',
+                    'Blade',
+                    'SQLite',
+                ],
             ],
             [
                 'id' => 3,
                 'title' => 'Mini CRM freelance',
                 'description' => 'Un mini CRM pour les freelances afin de gérer leurs clients.',
+                'technologies' => [
+                    'Laravel',
+                    'CRM',
+                    'PHP',
+                ],
             ],
         ];
     }

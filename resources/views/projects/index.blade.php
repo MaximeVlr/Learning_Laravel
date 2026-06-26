@@ -7,11 +7,7 @@
 
     <ul>
         @forelse ($projects as $project)
-            <li>
-                <a href="{{ route('projects.show', ['id' => $project['id'], 'title' => $project['title']]) }}">
-                    {{ $project['title'] }}
-                </a>
-            </li>
+            <x-project-card :project="$project" />
         @empty
             <li>Aucun projet trouvé.</li>
         @endforelse
