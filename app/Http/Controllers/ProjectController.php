@@ -13,13 +13,13 @@ class ProjectController extends Controller
         ]);
     }
 
-    public function show(string $id)
+    public function show(int $id)
     {
         $projects = $this->getProjects();
         $selectedProject = null;
 
         foreach ($projects as $project) {
-            if ($project['id'] === (int) $id) {
+            if ($project['id'] === $id) {
                 $selectedProject = $project;
                 break;
             }
