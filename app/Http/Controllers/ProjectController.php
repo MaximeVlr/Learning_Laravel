@@ -12,6 +12,7 @@ class ProjectController extends Controller
 
         return view('projects.index', [
             'projects' => $projects,
+            'projectsCount' => $projects->count(),
         ]);
     }
 

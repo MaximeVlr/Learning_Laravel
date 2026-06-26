@@ -4,6 +4,14 @@
 
 @section('content')
     <h1>Mes projets</h1>
+    <p>
+        {{ $projectsCount }}
+        @if ($projectsCount >= 2)
+            projets disponibles
+        @else
+            projet disponible
+        @endif
+    </p>
 
     <ul>
         @forelse ($projects as $project)
