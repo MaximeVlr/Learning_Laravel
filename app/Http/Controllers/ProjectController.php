@@ -9,7 +9,7 @@ class ProjectController extends Controller
 {
     public function index(Request $request)
     {
-        $search = $request->query('search');
+        $search = trim($request->query('search', ''));
 
         $query = Project::query();
 

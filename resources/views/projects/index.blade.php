@@ -28,7 +28,7 @@
         @forelse ($projects as $project)
             <x-project-card :project="$project" />
         @empty
-            @if ($search) 
+            @if ($search)
                 <li>Aucun projet ne correspond à votre recherche.</li>
             @else
                 <li>Aucun projet trouvé.</li>
