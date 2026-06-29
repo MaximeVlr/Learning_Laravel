@@ -14,11 +14,7 @@ class ProjectController extends Controller
         $query = Project::query();
 
         if ($search) {
-            $query->where(function ($query) use ($search) {
-                $query
-                    ->where('title', 'LIKE', '%' . $search . '%')
-                    ->orWhere('description', 'LIKE', '%' . $search . '%');
-            });
+            $query->searchByTitleOrDescription($search);
         }
         $projects = $query->orderBy('title')->get();
 
