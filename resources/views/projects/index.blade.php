@@ -4,11 +4,16 @@
 
 @section('content')
     <h1>Mes projets</h1>
-
-    <form action="{{ route('projects.index',  ['search' => $search]) }}" method="get">
-        <input type="search" name="value="{{ $search }}"" id="">
-        <input type="submit" value="Search">
+    
+    <form action="{{ route('projects.index') }}" method="GET">
+        <input type="search" name="search" value="{{ $search }}">
+        <input type="submit" value="Rechercher">
     </form>
+
+    @if ($search)
+        <h2>Recherche : {{ $search }}</h2>
+        <a href="{{ route('projects.index') }}">Réinitialiser la recherche</a>
+    @endif
 
     <p>
         {{ $projectsCount }}
@@ -23,7 +28,11 @@
         @forelse ($projects as $project)
             <x-project-card :project="$project" />
         @empty
-            <li>Aucun projet trouvé.</li>
+            @if ($search) 
+                <li>Aucun projet ne correspond à votre recherche.</li>
+            @else
+                <li>Aucun projet trouvé.</li>
+            @endif
         @endforelse
     </ul>
 @endsection

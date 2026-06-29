@@ -9,15 +9,20 @@ class ProjectController extends Controller
 {
     public function index(Request $request)
     {
-        if ($search = $request->query('search')) {
-            $projects = Project::where('title', 'LIKE', '%' . $search . '%')->get();
-        } else {
-            $projects = Project::orderBy('title')->get();
+        $search = $request->query('search');
+
+        $query = Project::query();
+
+        if ($search) {
+            $query->where('title', 'LIKE', '%' . $search . '%');
         }
+
+        $projects = $query->orderBy('title')->get();
 
         return view('projects.index', [
             'projects' => $projects,
             'projectsCount' => $projects->count(),
+            'search' => $search,
         ]);
     }
 
