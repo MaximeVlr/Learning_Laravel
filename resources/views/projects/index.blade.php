@@ -35,4 +35,6 @@
             @endif
         @endforelse
     </ul>
+    
+    {{ $projects->links() }}
 @endsection

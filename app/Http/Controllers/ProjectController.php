@@ -16,11 +16,15 @@ class ProjectController extends Controller
         if ($search) {
             $query->searchByTitleOrDescription($search);
         }
-        $projects = $query->orderBy('title')->get();
+
+        $projects = $query
+            ->orderBy('title')
+            ->paginate(2)
+            ->withQueryString();
 
         return view('projects.index', [
             'projects' => $projects,
-            'projectsCount' => $projects->count(),
+            'projectsCount' => $projects->total(),
             'search' => $search,
         ]);
     }
