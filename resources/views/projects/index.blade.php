@@ -4,6 +4,12 @@
 
 @section('content')
     <h1>Mes projets</h1>
+
+    <form action="{{ route('projects.index',  ['search' => $search]) }}" method="get">
+        <input type="search" name="value="{{ $search }}"" id="">
+        <input type="submit" value="Search">
+    </form>
+
     <p>
         {{ $projectsCount }}
         @if ($projectsCount >= 2)

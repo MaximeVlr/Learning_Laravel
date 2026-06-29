@@ -3,12 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\Models\Project;
+use Illuminate\Http\Request;
 
 class ProjectController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $projects = Project::all();
+        if ($search = $request->query('search')) {
+            $projects = Project::where('title', 'LIKE', '%' . $search . '%')->get();
+        } else {
+            $projects = Project::orderBy('title')->get();
+        }
 
         return view('projects.index', [
             'projects' => $projects,
