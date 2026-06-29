@@ -25,6 +25,14 @@ class ProjectSeeder extends Seeder
             'name' => 'PHP',
         ]);
 
+        $sqlite = Technology::create([
+            'name' => 'SQLite',
+        ]);
+
+        $crm = Technology::create([
+            'name' => 'CRM',
+        ]);
+
         $portfolio = Project::create([
             'title' => 'Portfolio Laravel',
             'description' => 'Un projet pour présenter mes compétences en Laravel.',
@@ -36,6 +44,30 @@ class ProjectSeeder extends Seeder
             $php->id,
         ]);
 
-        Project::factory()->count(10)->create();
+        $taskManager = Project::create([
+            'title' => 'Application de gestion de tâches',
+            'description' => 'Une application pour gérer les tâches quotidiennes.',
+        ]);
+
+        $taskManager->technologies()->attach([
+            $laravel->id,
+            $blade->id,
+            $sqlite->id,
+        ]);
+
+        $miniCrm = Project::create([
+            'title' => 'Mini CRM freelance',
+            'description' => 'Un mini CRM pour les freelances afin de gérer leurs clients.',
+        ]);
+
+        $miniCrm->technologies()->attach([
+            $laravel->id,
+            $php->id,
+            $crm->id,
+        ]);
+
+        Project::factory()
+            ->count(10)
+            ->create();
     }
 }
